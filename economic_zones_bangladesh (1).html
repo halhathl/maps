@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_fb8c1f0f77fc0c582100fb8ee34ffc28 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+        <div style="
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            width: 200px;
+            z-index: 1000;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid gray;
+            border-radius: 5px;
+            font-size: 12px;
+        ">
+        <h4 style="margin-top: 0;">Bangladesh - Zone Types</h4>
+        
+            <div style="display: flex; align-items: center; margin: 5px 0;">
+                <div style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #8dd3c7;
+                    margin-right: 5px;
+                    border: 1px solid black;
+                "></div>
+                <span>Export Processing Zone (8)</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin: 5px 0;">
+                <div style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #ffed6f;
+                    margin-right: 5px;
+                    border: 1px solid black;
+                "></div>
+                <span>Economic Zone (3)</span>
+            </div>
+            </div>
+    
+        <div style="
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: white;
+            padding: 10px;
+            border: 2px solid gray;
+            border-radius: 5px;
+            text-align: center;
+        ">
+            <h3 style="margin: 0;">Economic Zones in Bangladesh</h3>
+            <p style="margin: 5px 0 0 0;">Total Zones: 11</p>
+        </div>
+        
+    
+        <div style="
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-family: Arial;
+        ">
+            <strong>Source:</strong> worldbank.org<br>
+            <strong>Created by:</strong> Hatim Alhathloul
+        </div>
+        
+    
+            <div class="folium-map" id="map_fb8c1f0f77fc0c582100fb8ee34ffc28" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_fb8c1f0f77fc0c582100fb8ee34ffc28 = L.map(
+                "map_fb8c1f0f77fc0c582100fb8ee34ffc28",
+                {
+                    center: [23.303047636363637, 90.47163845454544],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e084384df3e8c58b23af04a9c180f2e2 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_e084384df3e8c58b23af04a9c180f2e2.addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+            var circle_marker_efff12baf54e196f6d9c3f46176963db = L.circleMarker(
+                [25.864561330586405, 88.85792841012366],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_751164df9b4db4e5a82cc127387d0ee2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8028162903e161852ffe94bb7eae3aee = $(`<div id="html_8028162903e161852ffe94bb7eae3aee" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 1</div>`)[0];
+                popup_751164df9b4db4e5a82cc127387d0ee2.setContent(html_8028162903e161852ffe94bb7eae3aee);
+            
+        
+
+        circle_marker_efff12baf54e196f6d9c3f46176963db.bindPopup(popup_751164df9b4db4e5a82cc127387d0ee2)
+        ;
+
+        
+    
+    
+            var circle_marker_ea5008f46068bde95988fc862abb5779 = L.circleMarker(
+                [22.283562692380446, 91.78549315157564],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_847f3fb5be7d3a1c52a83a0fe1ae1bad = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3c6a4ba59a7c33b44f9a8f0edec011a8 = $(`<div id="html_3c6a4ba59a7c33b44f9a8f0edec011a8" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 2</div>`)[0];
+                popup_847f3fb5be7d3a1c52a83a0fe1ae1bad.setContent(html_3c6a4ba59a7c33b44f9a8f0edec011a8);
+            
+        
+
+        circle_marker_ea5008f46068bde95988fc862abb5779.bindPopup(popup_847f3fb5be7d3a1c52a83a0fe1ae1bad)
+        ;
+
+        
+    
+    
+            var circle_marker_08fe35bd695e0cdf5454b92b24c4fc0d = L.circleMarker(
+                [22.23615718963031, 91.83971970981867],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffed6f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_b786c51791ff94708fc8d0c8f246b1ca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b491fe58ffe7ec2d9f905f28ce4500aa = $(`<div id="html_b491fe58ffe7ec2d9f905f28ce4500aa" style="width: 100.0%; height: 100.0%;">Zone Type: Economic Zone<br>Count: 1</div>`)[0];
+                popup_b786c51791ff94708fc8d0c8f246b1ca.setContent(html_b491fe58ffe7ec2d9f905f28ce4500aa);
+            
+        
+
+        circle_marker_08fe35bd695e0cdf5454b92b24c4fc0d.bindPopup(popup_b786c51791ff94708fc8d0c8f246b1ca)
+        ;
+
+        
+    
+    
+            var circle_marker_ad90e742ffa214e0fdc7a9046f00b545 = L.circleMarker(
+                [23.52823454792041, 90.69500449023217],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffed6f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_bd3fde3413cbb32d9deb4d683aaa4e65 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b4e268672dcc9097ec7a77515a7345f3 = $(`<div id="html_b4e268672dcc9097ec7a77515a7345f3" style="width: 100.0%; height: 100.0%;">Zone Type: Economic Zone<br>Count: 1</div>`)[0];
+                popup_bd3fde3413cbb32d9deb4d683aaa4e65.setContent(html_b4e268672dcc9097ec7a77515a7345f3);
+            
+        
+
+        circle_marker_ad90e742ffa214e0fdc7a9046f00b545.bindPopup(popup_bd3fde3413cbb32d9deb4d683aaa4e65)
+        ;
+
+        
+    
+    
+            var circle_marker_cc1b3ea7f7962c23aaabe0c82645c9f3 = L.circleMarker(
+                [23.43715481017648, 91.18760124171358],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_4df20e58e88e77072af020dc81ae65d6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6e5c990df4a25bcddbe17be9252bbb28 = $(`<div id="html_6e5c990df4a25bcddbe17be9252bbb28" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 1</div>`)[0];
+                popup_4df20e58e88e77072af020dc81ae65d6.setContent(html_6e5c990df4a25bcddbe17be9252bbb28);
+            
+        
+
+        circle_marker_cc1b3ea7f7962c23aaabe0c82645c9f3.bindPopup(popup_4df20e58e88e77072af020dc81ae65d6)
+        ;
+
+        
+    
+    
+            var circle_marker_ede0ffe4e7085af37f01995a1a7f5e0a = L.circleMarker(
+                [23.941908216447104, 90.27145057410327],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_97afc000a40d9e53ed746a420bd29c42 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bb5a16e3917519eca8786085a0dcf5a7 = $(`<div id="html_bb5a16e3917519eca8786085a0dcf5a7" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 1</div>`)[0];
+                popup_97afc000a40d9e53ed746a420bd29c42.setContent(html_bb5a16e3917519eca8786085a0dcf5a7);
+            
+        
+
+        circle_marker_ede0ffe4e7085af37f01995a1a7f5e0a.bindPopup(popup_97afc000a40d9e53ed746a420bd29c42)
+        ;
+
+        
+    
+    
+            var circle_marker_2d742bb0d4484104549424cc5ec621b4 = L.circleMarker(
+                [23.682580348296657, 90.51341327508608],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_262486c4eb632bb8c4ca08a3978784ae = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f81bf24eced9f46b81fc12d962a0d32 = $(`<div id="html_9f81bf24eced9f46b81fc12d962a0d32" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 1</div>`)[0];
+                popup_262486c4eb632bb8c4ca08a3978784ae.setContent(html_9f81bf24eced9f46b81fc12d962a0d32);
+            
+        
+
+        circle_marker_2d742bb0d4484104549424cc5ec621b4.bindPopup(popup_262486c4eb632bb8c4ca08a3978784ae)
+        ;
+
+        
+    
+    
+            var circle_marker_27de8910440950e0b132f08025383e47 = L.circleMarker(
+                [22.486217685851543, 89.59834023118178],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffed6f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_432f4520d2ab4577027179b44f92a122 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f91048c8f45fa42d1b7518d08c8d06c = $(`<div id="html_9f91048c8f45fa42d1b7518d08c8d06c" style="width: 100.0%; height: 100.0%;">Zone Type: Economic Zone<br>Count: 1</div>`)[0];
+                popup_432f4520d2ab4577027179b44f92a122.setContent(html_9f91048c8f45fa42d1b7518d08c8d06c);
+            
+        
+
+        circle_marker_27de8910440950e0b132f08025383e47.bindPopup(popup_432f4520d2ab4577027179b44f92a122)
+        ;
+
+        
+    
+    
+            var circle_marker_3b04b1d838936bba7745068337cf0031 = L.circleMarker(
+                [22.486217685851543, 89.59834023118178],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_2bd5d063315dfbb906db5d5974869783 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98570664a9c97406f485b7cde8acdd84 = $(`<div id="html_98570664a9c97406f485b7cde8acdd84" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 1</div>`)[0];
+                popup_2bd5d063315dfbb906db5d5974869783.setContent(html_98570664a9c97406f485b7cde8acdd84);
+            
+        
+
+        circle_marker_3b04b1d838936bba7745068337cf0031.bindPopup(popup_2bd5d063315dfbb906db5d5974869783)
+        ;
+
+        
+    
+    
+            var circle_marker_5a50b03aa41b0b546acef863eceb0029 = L.circleMarker(
+                [24.083126386912774, 89.03273812601951],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8dd3c7", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 1}
+            ).addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+    
+        var popup_e7038dfbc189721cc68175168c364d41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b0654dbc020cd2e3f3c501bb8c4e7aed = $(`<div id="html_b0654dbc020cd2e3f3c501bb8c4e7aed" style="width: 100.0%; height: 100.0%;">Zone Type: Export Processing Zone<br>Count: 1</div>`)[0];
+                popup_e7038dfbc189721cc68175168c364d41.setContent(html_b0654dbc020cd2e3f3c501bb8c4e7aed);
+            
+        
+
+        circle_marker_5a50b03aa41b0b546acef863eceb0029.bindPopup(popup_e7038dfbc189721cc68175168c364d41)
+        ;
+
+        
+    
+    
+        function geo_json_e8423d86a0500724131236506b1dad3b_styler(feature) {
+            switch(feature.id) {
+                case "0": case "1": case "4": case "5": case "6": case "8": case "9": 
+                    return {"color": "black", "fillColor": "#8dd3c7", "fillOpacity": 0.5, "weight": 1};
+                default:
+                    return {"color": "black", "fillColor": "#ffed6f", "fillOpacity": 0.5, "weight": 1};
+            }
+        }
+
+        function geo_json_e8423d86a0500724131236506b1dad3b_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_e8423d86a0500724131236506b1dad3b = L.geoJson(null, {
+                onEachFeature: geo_json_e8423d86a0500724131236506b1dad3b_onEachFeature,
+            
+                style: geo_json_e8423d86a0500724131236506b1dad3b_styler,
+        });
+
+        function geo_json_e8423d86a0500724131236506b1dad3b_add (data) {
+            geo_json_e8423d86a0500724131236506b1dad3b
+                .addData(data);
+        }
+            geo_json_e8423d86a0500724131236506b1dad3b_add({"features": [{"geometry": {"coordinates": [[[88.872148, 25.861927], [88.868091, 25.87408], [88.853872, 25.876714], [88.84371, 25.867194], [88.847767, 25.855041], [88.861985, 25.852407], [88.872148, 25.861927]]], "type": "Polygon"}, "id": "0", "properties": {"count": 1, "h3_index": "873c19691ffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[91.799648, 22.280471], [91.795726, 22.293175], [91.78157, 22.296266], [91.771339, 22.286653], [91.775262, 22.273949], [91.789416, 22.270858], [91.799648, 22.280471]]], "type": "Polygon"}, "id": "1", "properties": {"count": 2, "h3_index": "873cc2182ffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[91.853873, 22.233059], [91.849954, 22.245769], [91.835799, 22.248867], [91.825566, 22.239254], [91.829487, 22.226544], [91.84364, 22.223446], [91.853873, 22.233059]]], "type": "Polygon"}, "id": "2", "properties": {"count": 1, "h3_index": "873cc219bffffff", "zone_type": "Economic Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[90.709186, 23.525299], [90.705213, 23.537823], [90.691031, 23.540758], [90.680823, 23.531169], [90.684797, 23.518645], [90.698978, 23.515709], [90.709186, 23.525299]]], "type": "Polygon"}, "id": "3", "properties": {"count": 1, "h3_index": "873cc6912ffffff", "zone_type": "Economic Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[91.201794, 23.434168], [91.197838, 23.446724], [91.183644, 23.44971], [91.173408, 23.44014], [91.177366, 23.427584], [91.191558, 23.424598], [91.201794, 23.434168]]], "type": "Polygon"}, "id": "4", "properties": {"count": 1, "h3_index": "873cc6b81ffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[90.285637, 23.939033], [90.281646, 23.951491], [90.267459, 23.954366], [90.257264, 23.944782], [90.261256, 23.932324], [90.275442, 23.929449], [90.285637, 23.939033]]], "type": "Polygon"}, "id": "5", "properties": {"count": 1, "h3_index": "873cf1074ffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[90.527596, 23.679669], [90.523616, 23.692168], [90.509432, 23.695079], [90.499231, 23.68549], [90.503212, 23.672991], [90.517394, 23.670081], [90.527596, 23.679669]]], "type": "Polygon"}, "id": "6", "properties": {"count": 1, "h3_index": "873cf174dffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[89.61243, 22.483335], [89.60844, 22.495922], [89.594349, 22.498804], [89.584251, 22.489099], [89.588242, 22.476513], [89.602331, 22.47363], [89.61243, 22.483335]]], "type": "Polygon"}, "id": "7", "properties": {"count": 1, "h3_index": "873cf3420ffffff", "zone_type": "Economic Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[89.61243, 22.483335], [89.60844, 22.495922], [89.594349, 22.498804], [89.584251, 22.489099], [89.588242, 22.476513], [89.602331, 22.47363], [89.61243, 22.483335]]], "type": "Polygon"}, "id": "8", "properties": {"count": 1, "h3_index": "873cf3420ffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}, {"geometry": {"coordinates": [[[89.046879, 24.080378], [89.042852, 24.09276], [89.028711, 24.095507], [89.018598, 24.085873], [89.022626, 24.073492], [89.036765, 24.070744], [89.046879, 24.080378]]], "type": "Polygon"}, "id": "9", "properties": {"count": 1, "h3_index": "873cf549dffffff", "zone_type": "Export Processing Zone"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_e8423d86a0500724131236506b1dad3b.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["zone_type", "count"];
+    let aliases = ["Zone Type:", "Count:"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            geo_json_e8423d86a0500724131236506b1dad3b.addTo(map_fb8c1f0f77fc0c582100fb8ee34ffc28);
+        
+</script>
+</html>
